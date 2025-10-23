@@ -74,8 +74,9 @@
 
             <!-- Navigation Links -->
             <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xl mb-24">
+                <a href="#approach" class="text-[#ecc576] underline hover:opacity-80 transition-opacity duration-300">My Approach</a>
                 <a href="#about" class="text-[#ecc576] underline hover:opacity-80 transition-opacity duration-300">About Me</a>
-                <a href="#resources" class="text-[#ecc576] underline hover:opacity-80 transition-opacity duration-300">Resources</a>
+                <!-- <a href="#resources" class="text-[#ecc576] underline hover:opacity-80 transition-opacity duration-300">Resources</a> -->
                 <a href="#booking" class="text-[#ecc576] underline hover:opacity-80 transition-opacity duration-300">Booking</a>
                 <a href="#contact" class="text-[#ecc576] underline hover:opacity-80 transition-opacity duration-300">Contact</a>
             </nav>
@@ -95,19 +96,28 @@
 
     <!-- === "MY APPROACH" SECTION === -->
     <section id="approach" class="py-20 bg-[#a6864f] text-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
+        <div class="max-w-4xl mx-auto px-4">
             
-            <h2 class="text-4xl font-semibold mb-6">My Approach</h2>
+            <h2 class="text-4xl font-semibold mb-6 text-center">My Approach</h2>
             
-            <p class="text-xl mb-12">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <div class="text-xl space-y-6 text-left">
+                <p>
+                    I focus on providing clear explanations and a supportive teaching style, making sure every student feels comfortable and understood. I work with learners of all ages, guiding them through math concepts and study skills with a focus on building confidence and understanding.
+                </p>
+                <p>
+                    I have extensive experience supporting both neurotypical students and those with learning differences, and I adapt my approach to meet each learner’s unique needs. 
+                </p>
+                <p>
+                    By combining traditional teaching methods with the latest tools, I help students stay engaged and motivated. My dedication to making learning both effective and enjoyable ensures that every session leaves students better prepared for success.
+                </p>
+            </div>
 
             <!-- Icon/Image Placeholders -->
-            <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12 mt-12">
                 <!-- Placeholder 1 (Image) -->
-                <div class="w-48 h-48 border-4 border-dashed border-white rounded-lg flex items-center justify-center p-4 flex-shrink-0">
-                    <span class="text-gray-200 text-sm">Image/Icon Placeholder 1</span>
+                <div class="w-48 h-48 flex items-center justify-center p-4 flex-shrink-0">
+                    <!-- <span class="text-gray-200 text-sm">Image/Icon Placeholder 1</span> -->
+                     <img src="math.png">
                 </div>
                 
                 <!-- Placeholder 2 (Textbox) -->
@@ -117,8 +127,9 @@
                 </div>
 
                 <!-- Placeholder 3 (Image) -->
-                <div class="w-48 h-48 border-4 border-dashed border-white rounded-lg flex items-center justify-center p-4 flex-shrink-0">
-                    <span class="text-gray-200 text-sm">Image/Icon Placeholder 2</span>
+                <div class="w-48 h-48 flex items-center justify-center p-4 flex-shrink-0">
+                    <!-- <span class="text-gray-200 text-sm">Image/Icon Placeholder 2</span> -->
+                     <img src="ai.png">
                 </div>
             </div>
 
@@ -222,42 +233,67 @@
     <!-- === END FOOTER === -->
 
 
+    <!-- === BACK TO TOP BUTTON === -->
+    <a href="#home" id="back-to-top" class="fixed bottom-8 right-8 bg-[#a6864f] text-white p-3 rounded-full shadow-lg hover:bg-[#ecc576] transition-all duration-300 opacity-0 scale-90 translate-y-2">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+    </a>
+    <!-- === END BACK TO TOP BUTTON === -->
+
+
     <script>
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // --- Parallax Background Effect ---
         const heroBgImage = document.getElementById('hero-bg-image');
-        let animationFrameId = null;
+        let parallaxFrameId = null;
 
         function handleParallax() {
-            // Get scroll position
             const scrollPos = window.scrollY;
-            
-            // Move the image down at 50% of the scroll speed
-            // This creates the "lagging" effect
             if (heroBgImage) {
                 heroBgImage.style.transform = `translateY(${scrollPos * 0.5}px)`;
             }
+            parallaxFrameId = requestAnimationFrame(handleParallax);
+        }
+
+        // --- Back to Top Button Logic ---
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        function showHideBackToTop() {
+            if (!backToTopButton) return;
             
-            // Continue the loop
-            animationFrameId = requestAnimationFrame(handleParallax);
-        }
-
-        // Listen for scroll events
-        window.addEventListener('scroll', () => {
-            // If an animation frame is already scheduled, don't schedule another
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
+            if (window.scrollY > 400) { // Show button after scrolling 400px
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.transform = 'scale(1) translateY(0)';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.transform = 'scale(0.9) translateY(0.5rem)';
             }
-            // Request the next animation frame to run our function
-            animationFrameId = requestAnimationFrame(handleParallax);
-        }, { passive: true }); // Use passive listener for better scroll performance
-
-        // Run once on load to position correctly
-        if (heroBgImage) {
-            requestAnimationFrame(handleParallax);
         }
+
+        // --- Combined Scroll Listener ---
+        let scrollFrameId = null;
+
+        function onScroll() {
+            // Request animation frame for all scroll-based actions
+            if (scrollFrameId) {
+                cancelAnimationFrame(scrollFrameId);
+            }
+            scrollFrameId = requestAnimationFrame(() => {
+                handleParallax();
+                showHideBackToTop();
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Run functions once on load to set initial states
+        requestAnimationFrame(() => {
+            handleParallax();
+            showHideBackToTop();
+        });
     </script>
 
 </body>
