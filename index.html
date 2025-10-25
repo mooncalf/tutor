@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chris Gwartney - Academic Coaching</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,7 +95,8 @@
 
     <!-- === "MY APPROACH" SECTION === -->
     <section id="approach" class="py-20 bg-[#827153] text-white">
-        <div class="max-w-4xl mx-auto px-4 text-left">
+        <!-- Added `relative` to establish a positioning context for margin content -->
+        <div class="max-w-4xl mx-auto px-4 text-left relative">
             
             <h2 class="text-4xl font-semibold mb-10 text-center">My Approach</h2>
             
@@ -102,12 +104,25 @@
             <div class="text-lg space-y-6 font-normal">
                 <div>
                     <h3 class="text-2xl font-semibold mb-3">Cutting-Edge Learning: The AI-Augmented Model</h3>
-                    <p class="mb-4">
-My approach reflects the latest research in education, which shows that the most effective tutoring utilizes an AI-augmented model: an approach that pairs a dedicated, human mentor with smart, responsive AI technology to give your student the best of both worlds.
-                    </p>
+                    
+                        <p class="mb-4">
+    My approach reflects the latest research in education, which shows that the most effective tutoring utilizes an AI-augmented model: an approach that pairs a dedicated, human mentor with smart, responsive AI technology to give your student the best of both worlds.
+                        </p>
+                    </div>
+
+                    <!-- Wrapper for paragraph with margin content -->
+                    <div class="relative">
+                        <!-- Margin Content: Absolutely positioned to the left of the text -->
+                        <!-- `right-full` places it just to the left of the parent -->
+                        <!-- `mr-8` adds margin between the image and the text -->
+                        <div class="absolute top-0 right-full w-24 mr-8 hidden md:block">
+                            <!-- Replace this with your desired image -->
+                            <img src="favicon.png" alt="AI-augmented model icon" class="w-full h-auto">
+                        </div>
                     <p class="mb-4">
 I implement this augmented model by combining regular one-on-one mentorship with a custom, data-driven system centered around Google's LearnLM. This approach pairs today's most advanced tools with time-tested educational benchmarks; all methods are based entirely on established Common Core standards.
                     </p>
+                    </div>
                     <p class="mb-4">
 This system helps us pinpoint the exact concepts your student needs to focus on, allowing me to create a 100% personalized plan that adapts after every session.
                     </p>
@@ -134,7 +149,7 @@ This system helps us pinpoint the exact concepts your student needs to focus on,
                         This system handles the heavy data-lifting, which frees me to focus on the most important part: human-first mentor, building your student's confidence, and helping them foster a genuine curiosity for the subject and for learning in general.
                     </p>
                 </div>
-
+<br>
                 <div>
                     <h3 class="text-2xl font-semibold mb-3">Traditional Tutoring</h3>
                     <p>
